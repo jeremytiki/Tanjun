@@ -271,7 +271,7 @@ class Client(injecting.InjectorClient, tanjun_abc.Client):
         The Hikari event manager client this will use if applicable.
     server : hikari.api.interaction_server.InteractionServer
         The Hikari interaction server client this will use if applicable.
-    shard : hikari.traits.ShardAware
+    shards : hikari.traits.ShardAware
         The Hikari shard aware client this will use if applicable.
     event_managed : bool
         Whether or not this client is managed by the event manager.
@@ -334,7 +334,7 @@ class Client(injecting.InjectorClient, tanjun_abc.Client):
         cache: typing.Optional[hikari.api.Cache] = None,
         events: typing.Optional[hikari.api.EventManager] = None,
         server: typing.Optional[hikari.api.InteractionServer] = None,
-        shard: typing.Optional[hikari_traits.ShardAware] = None,
+        shards: typing.Optional[hikari_traits.ShardAware] = None,
         event_managed: bool = False,
         mention_prefix: bool = False,
         set_global_commands: typing.Union[hikari.Snowflake, bool] = False,
@@ -363,7 +363,7 @@ class Client(injecting.InjectorClient, tanjun_abc.Client):
         self._prefixes: set[str] = set()
         self._rest = rest
         self._server = server
-        self._shards = shard
+        self._shards = shards
 
         if event_managed:
             if not self._events:
@@ -447,7 +447,7 @@ class Client(injecting.InjectorClient, tanjun_abc.Client):
                 rest=bot.rest,
                 cache=bot.cache,
                 events=bot.event_manager,
-                shard=bot,
+                shards=bot,
                 event_managed=event_managed,
                 mention_prefix=mention_prefix,
                 set_global_commands=set_global_commands,
