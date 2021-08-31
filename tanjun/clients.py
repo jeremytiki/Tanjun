@@ -1346,7 +1346,7 @@ class Client(injecting.InjectorClient, tanjun_abc.Client):
         tanjun.context.ResponseType
             The initial response to send back to Discord.
         """
-        ctx = context.SlashContext(self, interaction, not_found_message=self._interaction_not_found)
+        ctx = context.SlashContext(self, self, interaction, not_found_message=self._interaction_not_found)
         if self._auto_defer_after is not None:
             ctx.start_defer_timer(self._auto_defer_after)
 
